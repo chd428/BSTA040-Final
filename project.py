@@ -23,7 +23,7 @@ statedata = statedata.assign(Week=statedata["epiweek"].astype(int).apply(numweek
 #print(statedata)
 
 st.line_chart(statedata, y='ili',x='Week')
-#fig,ax = plt.subplots()
+fig,ax = plt.subplots()
 #ax.plot((statedata['ili']))
 #plt.show()
-st.hist(statedata['ili'], bins = 50)
+ax.hist(statedata['ili'], bins = 50)
