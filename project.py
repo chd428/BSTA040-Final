@@ -22,6 +22,7 @@ statedata = dataset.loc[dataset["state"] == selstate]
 statedata = statedata.assign(Week=statedata["epiweek"].astype(int).apply(numweeks))
 #print(statedata)
 
-st.line_chart(statedata, x='ili',y='Week')
+st.line_chart(statedata, y='ili',x='Week')
 #fig,ax = plt.subplots()
-#ax.plot(())
+#ax.plot((statedata['ili']))
+#plt.show()
