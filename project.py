@@ -7,7 +7,7 @@ import scipy.stats as sci
 
 dataset = pd.read_csv('ilidata.csv')
 #dataset tracks influenze like illness (ILI) across US states over time
-#
+
 #plot ili data time series depending on the user selected state
 
 
@@ -32,10 +32,12 @@ st.line_chart(statedata, y='ili',x='Week')
 fig,ax = plt.subplots()
 mean = np.mean(statedata.ili)
 lambdaval = 1 / mean
-
-count, bins, _ = ax.hist(statedata['ili'], bins = 50, density = True)
-xmin, xmax = 0, np.max(statedata['ili'])
-x = np.linspace(xmin, xmax, 200)
-y = sci.expon.pdf(x, loc = 0, scale = mean)
-ax.plot(x,y)
-st.pyplot(fig)
+if mean < 0:
+    st.write("Error with dataset.")
+else:
+    count, bins, _ = ax.hist(statedata['ili'], bins = 50, density = True)
+    xmin, xmax = 0, np.max(statedata['ili'])
+    x = np.linspace(xmin, xmax, 200)
+    y = sci.expon.pdf(x, loc = 0, scale = mean)
+    ax.plot(x,y)
+    st.pyplot(fig)
