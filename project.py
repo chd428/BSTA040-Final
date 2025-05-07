@@ -31,10 +31,11 @@ st.line_chart(statedata, y='ili',x='Week')
 
 fig,ax = plt.subplots()
 mean = np.mean(statedata.ili)
-lambdaval = 1 / mean
+
 if mean < 0:
     st.write("Error with dataset.")
 else:
+    lambdaval = 1 / mean
     count, bins, _ = ax.hist(statedata['ili'], bins = 50, density = True)
     xmin, xmax = 0, np.max(statedata['ili'])
     x = np.linspace(xmin, xmax, 200)
