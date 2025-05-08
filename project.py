@@ -49,10 +49,10 @@ else:
         st.markdown("Important descriptions for understanding data: ")
         col1, col2 = st.columns(spec = [0.3, 0.7], vertical_alignment = "bottom")
         with col1:
-            st.markdown(''':pink[**ILI**]''')
-            st.markdown(''':blue[**Week**]''')
-            st.markdown(''':blue[**State**]''')
-            st.markdown('''pink["%ILI]''')
+            st.markdown(''':red[**ILI**]''')
+            st.markdown(''':red[**Week**]''')
+            st.markdown(''':red[**State**]''')
+            st.markdown(''':red[**%ILI**]''')
         with col2:
             st.markdown("Influenza-Like-Illness")
             st.markdown("Unweighted # ILI / total hospital visits x 100")
