@@ -42,7 +42,15 @@ else:
     y = sci.expon.pdf(x, loc = 0, scale = mean)
     ax.plot(x,y)
     st.pyplot(fig)
-
-
-if st.button('Info'):
-    st.help(dataset)
+    
+    with st.expander("Info about the ILI Dataset"):
+        st.write("This dataset tracks influenza-like illness (ILI) across U.S. states over time.")
+        st.write()
+        st.markdown("Important descriptions for understanding the graphs: ")
+        col1, col2 = st.columns(spec = [0.3, 0.7], vertical_alignment = "bottom")
+        with col1:
+            st.markdown(''':blue[Week]''')
+            st.markdown(''':blue[State]''')
+        with col2:
+            st.markdown("The week an observation was tracked (excluding periods without observed outbreak)")
+            st.markdown("State/location picked by user detailing area observed.")
