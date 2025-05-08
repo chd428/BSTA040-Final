@@ -42,7 +42,7 @@ statedata = dataset.loc[dataset["state"] == selstate]
 startweek = statedata['epiweek'].iloc[0]
 statedata = statedata.assign(Week=statedata["epiweek"].astype(int).apply(numweeks))
 #print(statedata)
-st.line_chart(statedata, y='ili',x='Week')
+st.line_chart(statedata, y='ili',x='Week', color = 'red')
 
 
 
@@ -54,9 +54,11 @@ mean = np.mean(statedata.ili)
 if mean < 0:
     st.write("Error with dataset.")
 else:
+    plt.fig(facecolor = '#f9f0f0')
+    ax.set_facecolor('f9f0f0')
     lambdaval = 1 / mean
-    count, bins, _ = ax.hist(statedata['ili'], bins = 50, density = True)
-    xmin, xmax = 0, np.max(statedata['ili'])
+    count, bins, _ = ax.hist(statedata['ili'], bins = 50, density = True, color = 'red')
+    xmin, xmax = 0, np.max(statedata['ili'], color = '#410505', linestyle = 'dashed')
     x = np.linspace(xmin, xmax, 200)
     y = sci.expon.pdf(x, loc = 0, scale = mean)
     ax.plot(x,y)
