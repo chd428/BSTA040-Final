@@ -42,3 +42,8 @@ else:
     y = sci.expon.pdf(x, loc = 0, scale = mean)
     ax.plot(x,y)
     st.pyplot(fig)
+
+
+infobutton = st.button('Info')
+if infobutton:
+    st.help(dataset)
