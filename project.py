@@ -23,7 +23,7 @@ statedata = dataset.loc[dataset["state"] == selstate]
 startweek = statedata['epiweek'].iloc[0]
 statedata = statedata.assign(Week=statedata["epiweek"].astype(int).apply(numweeks))
 #print(statedata)
-st.line_chart(statedata, y='ili',x='Week')
+st.line_chart(statedata, y='ili',x='Week', color="#FFB1E2")
 
 
 
@@ -43,14 +43,14 @@ else:
     ax.plot(x,y)
     st.pyplot(fig)
     
-    with st.expander("Info about the ILI Dataset"):
+    with st.expander("Info", type = "primary"):
         st.write("This dataset tracks influenza-like illness (ILI) across U.S. states over time.")
         st.write()
-        st.markdown("Important descriptions for understanding the graphs: ")
+        st.markdown("Important descriptions for understanding data: ")
         col1, col2 = st.columns(spec = [0.3, 0.7], vertical_alignment = "bottom")
         with col1:
-            st.markdown(''':blue[Week]''')
-            st.markdown(''':blue[State]''')
+            st.markdown(''':blue[**Week**]''')
+            st.markdown(''':blue[**State**]''')
         with col2:
-            st.markdown("The week an observation was tracked (excluding periods without observed outbreak)")
+            st.markdown("The week an observation was tracked (excluding non-outbreak)")
             st.markdown("State/location picked by user detailing area observed.")
