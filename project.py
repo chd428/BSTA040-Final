@@ -43,14 +43,19 @@ else:
     ax.plot(x,y)
     st.pyplot(fig)
     
-    with st.expander("Info", icon = "🔻"):
+    with st.expander("Info", icon = "❓"):
         st.write("This dataset tracks influenza-like illness (ILI) across U.S. states over time.")
         st.write()
         st.markdown("Important descriptions for understanding data: ")
         col1, col2 = st.columns(spec = [0.3, 0.7], vertical_alignment = "bottom")
         with col1:
+            st.markdown(''':pink[**ILI**]''')
             st.markdown(''':blue[**Week**]''')
             st.markdown(''':blue[**State**]''')
+            st.markdown('''pink["%ILI]''')
         with col2:
+            st.markdown("Influenza-Like-Illness")
+            st.markdown("Unweighted # ILI / total hospital visits x 100")
             st.markdown("The week an observation was tracked (excluding non-outbreak)")
             st.markdown("State/location picked by user detailing area observed.")
+            
