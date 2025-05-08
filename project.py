@@ -34,14 +34,15 @@ states = dataset.state.unique()
 
 selstate = st.selectbox("Select a state", states)
 
-def numweeks(epiweek):
-    adjustedweek = epiweek - startweek
-    return adjustedweek
+#def numweeks(epiweek):
+    #adjustedweek = epiweek - startweek
+    #return adjustedweek
 
 statedata = dataset.loc[dataset["state"] == selstate]
 startweek = statedata['epiweek'].iloc[0]
 statedata = statedata[statedata['season'] != 'offseason']
-statedata = statedata.assign(Week=statedata["epiweek"].astype(int).apply(numweeks))
+#statedata = statedata.assign(Week=statedata["epiweek"].astype(int).apply(numweeks))
+statedata['Week'] = range(len(statedata))
 #print(statedata)
 st.line_chart(statedata, y='ili',x='Week', color = "#FF0000")
 
