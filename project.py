@@ -48,13 +48,12 @@ st.line_chart(statedata, y='ili',x='Week', color = "#FF0000")
 
 #histogram
 
-fig,ax = plt.subplots()
+fig,ax = plt.subplots(facecolor = '#f9f0f0')
 mean = np.mean(statedata.ili)
 
 if mean < 0:
     st.write("Error with dataset.")
 else:
-    plt.figure(facecolor = '#f9f0f0')
     ax.set_facecolor('#f9f0f0')
     lambdaval = 1 / mean
     count, bins, _ = ax.hist(statedata['ili'], bins = 50, density = True, color = 'red')
