@@ -58,8 +58,8 @@ else:
     ax.set_facecolor('#f9f0f0')
     lambdaval = 1 / mean
     count, bins, _ = ax.hist(statedata['ili'], bins = 50, density = True, color = 'red')
-    xmin, xmax = 0, np.max(statedata['ili'], color = '#410505', linestyle = 'dashed')
+    xmin, xmax = 0, np.max(statedata['ili'])
     x = np.linspace(xmin, xmax, 200)
     y = sci.expon.pdf(x, loc = 0, scale = mean)
-    ax.plot(x,y)
+    ax.plot(x,y, color ='#410505', linestyle = "dashed")
     st.pyplot(fig)
