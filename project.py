@@ -43,7 +43,7 @@ else:
     ax.plot(x,y)
     st.pyplot(fig)
     
-    with st.expander("Info", type = "primary"):
+    with st.expander("Info", icon = ":material/more-horiz"):
         st.write("This dataset tracks influenza-like illness (ILI) across U.S. states over time.")
         st.write()
         st.markdown("Important descriptions for understanding data: ")
