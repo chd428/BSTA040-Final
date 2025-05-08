@@ -44,6 +44,5 @@ else:
     st.pyplot(fig)
 
 
-infobutton = st.button('Info')
-if infobutton:
+if st.button('Info'):
     st.help(dataset)
