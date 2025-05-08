@@ -55,7 +55,7 @@ if mean < 0:
     st.write("Error with dataset.")
 else:
     plt.figure(facecolor = '#f9f0f0')
-    ax.set_facecolor('f9f0f0')
+    ax.set_facecolor('#f9f0f0')
     lambdaval = 1 / mean
     count, bins, _ = ax.hist(statedata['ili'], bins = 50, density = True, color = 'red')
     xmin, xmax = 0, np.max(statedata['ili'], color = '#410505', linestyle = 'dashed')
