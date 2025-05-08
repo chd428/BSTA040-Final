@@ -21,13 +21,13 @@ with st.expander("Key info for understanding dataset + graphs", icon = "❓"):
     col1, col2 = st.columns(spec = [0.3, 0.7], vertical_alignment = "bottom")
     with col1:
         st.markdown(''':red[**ILI**]''')
-        st.markdown(''':red[**Week**]''')
-        st.markdown(''':red[**State**]''')
         st.markdown(''':red[**%ILI**]''')
+        st.markdown(''':red[**Week**]''')
+        st.markdown(''':red[**State**]''')  
     with col2:
         st.markdown("Influenza-Like-Illness")
         st.markdown("Unweighted # ILI / total hospital visits x 100")
-        st.markdown("The week an observation was tracked (excluding non-outbreak)")
+        st.markdown("The week an observation was tracked (skipping offweeks)")
         st.markdown("State/location picked by user detailing area observed.")
     
 states = dataset.state.unique()
@@ -40,7 +40,10 @@ def numweeks(epiweek):
 
 statedata = dataset.loc[dataset["state"] == selstate]
 startweek = statedata['epiweek'].iloc[0]
-statedata = statedata.assign(Week=statedata["epiweek"].astype(int).apply(numweeks))
+for i in statedata:
+    if statedata['season'] == 'offweek':
+        statedata.drop(i)
+    statedata = statedata.assign(Week=statedata["epiweek"].astype(int).apply(numweeks))
 #print(statedata)
 st.line_chart(statedata, y='ili',x='Week', color = "#FF0000")
 
