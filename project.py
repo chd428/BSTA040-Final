@@ -42,7 +42,7 @@ statedata = dataset.loc[dataset["state"] == selstate]
 startweek = statedata['epiweek'].iloc[0]
 statedata = statedata.assign(Week=statedata["epiweek"].astype(int).apply(numweeks))
 #print(statedata)
-st.line_chart(statedata, y='ili',x='Week', color = 'red')
+st.line_chart(statedata, y='ili',x='Week', color = "#FF0000")
 
 
 
