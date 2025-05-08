@@ -10,7 +10,26 @@ dataset = pd.read_csv('ilidata.csv')
 
 #plot ili data time series depending on the user selected state
 
+st.title("ILI Statistical Characterizations By State")
+st.subheader("BSTA-040 Final")
+st.markdown("Visualize **Influenza-Like-Illness** (ILI) and its probability distribution across a time period of 15 years (2010 - 2025) for a number of locations across the US.")
 
+with st.expander("Key info for understanding dataset + graphs", icon = "❓"):
+    st.write("This dataset tracks influenza-like illness (ILI) across U.S. states over time.")
+    st.write()
+    st.markdown("Important descriptions for understanding data: ")
+    col1, col2 = st.columns(spec = [0.3, 0.7], vertical_alignment = "bottom")
+    with col1:
+        st.markdown(''':red[**ILI**]''')
+        st.markdown(''':red[**Week**]''')
+        st.markdown(''':red[**State**]''')
+        st.markdown(''':red[**%ILI**]''')
+    with col2:
+        st.markdown("Influenza-Like-Illness")
+        st.markdown("Unweighted # ILI / total hospital visits x 100")
+        st.markdown("The week an observation was tracked (excluding non-outbreak)")
+        st.markdown("State/location picked by user detailing area observed.")
+    
 states = dataset.state.unique()
 
 selstate = st.selectbox("Select a state", states)
@@ -43,19 +62,4 @@ else:
     ax.plot(x,y)
     st.pyplot(fig)
     
-    with st.expander("Info", icon = "❓"):
-        st.write("This dataset tracks influenza-like illness (ILI) across U.S. states over time.")
-        st.write()
-        st.markdown("Important descriptions for understanding data: ")
-        col1, col2 = st.columns(spec = [0.3, 0.7], vertical_alignment = "bottom")
-        with col1:
-            st.markdown(''':red[**ILI**]''')
-            st.markdown(''':red[**Week**]''')
-            st.markdown(''':red[**State**]''')
-            st.markdown(''':red[**%ILI**]''')
-        with col2:
-            st.markdown("Influenza-Like-Illness")
-            st.markdown("Unweighted # ILI / total hospital visits x 100")
-            st.markdown("The week an observation was tracked (excluding non-outbreak)")
-            st.markdown("State/location picked by user detailing area observed.")
-            
+       
