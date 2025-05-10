@@ -10,7 +10,11 @@ dataset = pd.read_csv('ilidata.csv')
 #plot ili data time series depending on the user selected state
 
 st.title("ILI Statistical Characterizations By State")
-st.subheader("BSTA-040 Final")
+project, readbutton = st.columns(spec = [0.6, 0.3], vertical_alignment = "bottom")
+with project:
+    st.subheader("Cheyenne Desmond - BSTA-040 Final")
+with readbutton:
+    st.link_button("About the Author", README.md)
 st.markdown("Visualize **Influenza-Like-Illness** (ILI) and its probability distribution across a time period of 15 years (2010 - 2025) for a number of locations across the US.")
 
 with st.expander("Key info for understanding dataset + graphs", icon = "❓"):
@@ -60,7 +64,7 @@ if mean < 0:
 else:
     ax.set_facecolor('#f9f0f0')
     lambdaval = 1 / mean
-    st.subheader("Probability distribution of ILI percentage")
+    st.subheader("Probability Distribution of ILI Percentage")
     count, bins, _ = ax.hist(statedata['ili'], bins = 50, density = True, color = 'red')
     xmin, xmax = 0, np.max(statedata['ili'])
     x = np.linspace(xmin, xmax, 200)
