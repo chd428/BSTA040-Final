@@ -14,7 +14,7 @@ project, readbutton = st.columns(spec = [0.6, 0.3], vertical_alignment = "bottom
 with project:
     st.subheader("Cheyenne Desmond - BSTA-040 Final")
 with readbutton:
-    st.link_button("About the Author", README.md)
+    st.link_button("About the Author", "https://github.com/chd428/chd428/blob/main/README.md")
 st.markdown("Visualize **Influenza-Like-Illness** (ILI) and its probability distribution across a time period of 15 years (2010 - 2025) for a number of locations across the US.")
 
 with st.expander("Key info for understanding dataset + graphs", icon = "❓"):
