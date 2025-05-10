@@ -1,4 +1,3 @@
-'''BSTA040 Final'''
 import matplotlib.pyplot as plt 
 import numpy as np
 import pandas as pd
@@ -32,7 +31,8 @@ with st.expander("Key info for understanding dataset + graphs", icon = "❓"):
     
 states = dataset.state.unique()
 
-selstate = st.selectbox("Select a state", states)
+st.markdown("Please select a state/location below:")
+selstate = st.selectbox("state/location", states)
 
 #def numweeks(epiweek):
     #adjustedweek = epiweek - startweek
@@ -44,8 +44,10 @@ statedata = statedata[statedata['season'] != 'offseason']
 #statedata = statedata.assign(Week=statedata["epiweek"].astype(int).apply(numweeks))
 statedata['Week'] = range(len(statedata))
 #print(statedata)
-st.line_chart(statedata, y='ili',x='Week', color = "#FF0000")
 
+st.subheader("ILI Percentage Across All Epidemic Periods")
+st.line_chart(statedata, y='ili',x='Week', color = "#FF0000")
+st.caption("In the figure above, ILI percentage is shown for all weeks excluding off season for a given state. This shows peaks and lows for a selected state, and allows for a user to view trends in data.")
 
 
 #histogram
@@ -58,9 +60,13 @@ if mean < 0:
 else:
     ax.set_facecolor('#f9f0f0')
     lambdaval = 1 / mean
+    st.subheader("Probability distribution of ILI percentage")
     count, bins, _ = ax.hist(statedata['ili'], bins = 50, density = True, color = 'red')
     xmin, xmax = 0, np.max(statedata['ili'])
     x = np.linspace(xmin, xmax, 200)
     y = sci.expon.pdf(x, loc = 0, scale = mean)
     ax.plot(x,y, color ='#410505', linestyle = "dashed")
+    ax.set_xlabel("Percent ILI")
+    ax.set_ylabel("Probability")
     st.pyplot(fig)
+    st.caption("In the figure above, the probability distribution of ILI percentage is plotted on a histogram. These percentages can be seen in the 'ILI Percentage Across All Epidemic Periods' graph for cross reference. Each box in the histogram represents a distribution of ILI Percentage. The dotted line represents an exponential distribution curve. If the exponential distribution curve matches the general pattern of the histogram, it can be assumed that the probability ILI percentage follows an exponential distribution.")
