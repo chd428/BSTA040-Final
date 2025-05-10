@@ -1,4 +1,5 @@
 #final for BSTA-040
+#https://chd428-bsta040final.streamlit.app
 
 import matplotlib.pyplot as plt 
 import numpy as np
