@@ -10,7 +10,7 @@ dataset = pd.read_csv('ilidata.csv')
 #plot ili data time series depending on the user selected state
 
 st.title("ILI Statistical Characterizations By State")
-project, readbutton = st.columns(spec = [0.6, 0.3], vertical_alignment = "bottom")
+project, readbutton = st.columns(spec = [0.8, 0.2], vertical_alignment = "bottom")
 with project:
     st.subheader("Cheyenne Desmond - BSTA-040 Final")
 with readbutton:
